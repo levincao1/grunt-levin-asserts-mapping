@@ -34,7 +34,8 @@ module.exports = function(grunt) {
       delimiters: '{{ }}'
     };
     var done = this.async();
-
+    var compNum = 0;
+    var that = this;
     // Iterate over all specified file groups.
     this.files.forEach(function(filePair) {
       var cwd = filePair.cwd,
@@ -172,6 +173,10 @@ module.exports = function(grunt) {
           grunt.log.writeln('✔ '.green + 'Mapping file: ' + jsonFile + ' saved.');
         } else {
           grunt.log.writeln('  All hashed.'.grey);
+        }
+        compNum ++;
+        if(compNum == that.files.length){
+          done();
         }
       }
 
