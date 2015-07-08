@@ -28,25 +28,15 @@ module.exports = function(grunt) {
       tests: ['tmp']
     },
 
-    // Configuration to be run (and then tested).
-    //levin_static_pkg: {
-    //  default_options: {
-    //    options: {
-    //    },
-    //    files: {
-    //      'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-    //    }
-    //  },
-    //  custom_options: {
-    //    options: {
-    //      separator: ': ',
-    //      punctuation: ' !!!'
-    //    },
-    //    files: {
-    //      'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-    //    }
-    //  }
-    //},
+    copy:{
+      main:{
+        files:[
+          {expand:true,cwd:'test/',src:['module1/**/*','module2/**/*'],dest:'tmp/'}
+        ]
+      }
+    },
+
+
     levin_asserts_mapping: {
       options:{
         mapping:'{{= dest}}md5conf.json',
@@ -81,12 +71,15 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
   //grunt.registerTask('test', ['clean', 'levin_static_pkg', 'nodeunit']);
-  grunt.registerTask('test', ['clean', 'levin_asserts_mapping']);
+  //grunt.registerTask('test', ['clean', 'levin_asserts_mapping']);
+  //grunt.registerTask('test', ['clean','copy','levin_asserts_mapping']);
+  grunt.registerTask('test', ['levin_asserts_mapping']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

@@ -99,31 +99,16 @@ module.exports = function(grunt) {
 
       function flush(filePath, hashed) {
         grunt.verbose.writeln('Hash'+ ' for ' + filePath + ': ' + hashed);
-        //if (dest) {
-        //  saveFile(filePath, hashed);
-        //}
-        //grunt.log.warn('levin-> '.green + Object.keys(mapping).length + ' => '.magenta + src.length);
-        if (Object.keys(mapping).length === src.length) {
-          createMapping();
-        }
-      }
-      function saveFile(filePath, hashed) {
-        var srcFile = getRealPath(filePath);
-        var distFile = path.join(dest, filePath);
-        if (srcFile !== distFile) {
-          if (distFile.indexOf(dest) === -1) {
-            grunt.log.warn('Renamed target "' + distFile + '" is not in dest directory.');
-          }
-          grunt.file.copy(srcFile, distFile);
-          grunt.log.writeln('✔ '.green + srcFile + ' => '.magenta + distFile);
-        }
-
         if (options.mapping) {
           mapping[ filePath ] = {
             'md5' : hashed,
             'Content-Type':getContentType(filePath),
             'charset':'utf-8'
           };
+        }
+        //grunt.log.warn('levin-> '.green + Object.keys(mapping).length + ' => '.magenta + src.length);
+        if (Object.keys(mapping).length === src.length) {
+          createMapping();
         }
       }
 
