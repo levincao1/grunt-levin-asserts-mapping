@@ -99,10 +99,10 @@ module.exports = function(grunt) {
 
       function flush(filePath, hashed) {
         grunt.verbose.writeln('Hash'+ ' for ' + filePath + ': ' + hashed);
-        if (dest) {
-          saveFile(filePath, hashed);
-        }
-        grunt.log.warn('levin-> '.green + Object.keys(mapping).length + ' => '.magenta + src.length);
+        //if (dest) {
+        //  saveFile(filePath, hashed);
+        //}
+        //grunt.log.warn('levin-> '.green + Object.keys(mapping).length + ' => '.magenta + src.length);
         if (Object.keys(mapping).length === src.length) {
           createMapping();
         }

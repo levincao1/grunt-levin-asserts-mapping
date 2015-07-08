@@ -37,17 +37,17 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.mapping
+mapping: `String`
+Default value: `{{dest}}mapping.json`
 
-A string value that is used to do something with whatever.
+A result JSON file of mapping name
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### options.algorithm
+algorithm: `String`
+Default value: `md5`
 
-A string value that is used to do something else with whatever else.
+A string value that is used to change file name.
 
 ### Usage Examples
 
