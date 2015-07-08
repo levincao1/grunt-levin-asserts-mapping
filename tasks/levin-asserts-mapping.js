@@ -116,27 +116,26 @@ module.exports = function(grunt) {
         if(!filePath){
           return '';
         }
-        var prefix ='text/';
-        if(/\.+css/.test(filePath)){
-            return prefix + 'css';
+        if(/\.+css$/.test(filePath)){
+            return 'text/css';
         }
-        if(/\.+js/.test(filePath)){
-            return prefix + 'js';
+        if(/\.+js$/.test(filePath)){
+            return 'application/x-javascript';
         }
-        if(/\.+(htm|html)/.test(filePath)){
-            return prefix + 'html';
+        if(/\.+(htm|html)$/.test(filePath)){
+            return 'text/html';
         }
-        if(/\.+(jpg|jpeg)/.test(filePath)){
-          return prefix + 'jpeg';
+        if(/\.+(jpg|jpeg)$/.test(filePath)){
+          return 'image/jpeg';
         }
-        if(/\.+png/.test(filePath)){
-          return prefix + 'png';
+        if(/\.+png$/.test(filePath)){
+          return 'image/png';
         }
-        if(/\.+gif/.test(filePath)){
-          return prefix + 'gif';
+        if(/\.+gif$/.test(filePath)){
+          return 'image/gif';
         }
-        if(/\.+ico/.test(filePath)){
-          return prefix + 'x-icon';
+        if(/\.+ico$/.test(filePath)){
+          return 'image/x-icon';
         }
       }
 
