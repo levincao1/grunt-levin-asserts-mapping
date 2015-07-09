@@ -1,5 +1,5 @@
 /*
- * grunt-levin-static-pkg
+ * grunt-levin-assets-mapping
  * 
  *
  * Copyright (c) 2015 levin cao
@@ -37,12 +37,12 @@ module.exports = function(grunt) {
     },
 
 
-    levin_asserts_mapping: {
+    levin_assets_mapping: {
       options:{
         mapping:'{{= dest}}md5conf.json',
         algorithm:'md5'
       },
-      assert:{
+      asset:{
           files:[
             {
                 cwd:'test/module1/',
@@ -77,9 +77,9 @@ module.exports = function(grunt) {
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
   //grunt.registerTask('test', ['clean', 'levin_static_pkg', 'nodeunit']);
-  //grunt.registerTask('test', ['clean', 'levin_asserts_mapping']);
-  //grunt.registerTask('test', ['clean','copy','levin_asserts_mapping']);
-  grunt.registerTask('test', ['levin_asserts_mapping']);
+  //grunt.registerTask('test', ['clean', 'levin_assets_mapping']);
+  //grunt.registerTask('test', ['clean','copy','levin_assets_mapping']);
+  grunt.registerTask('test', ['levin_assets_mapping']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

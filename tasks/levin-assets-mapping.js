@@ -1,5 +1,5 @@
 /*
- * grunt-levin-static-pkg
+ * grunt-levin-assets-mapping
  * 
  *
  * Copyright (c) 2015 levin cao
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('levin_asserts_mapping', 'Generate the pkg of zip by dest static asserts', function() {
+  grunt.registerMultiTask('levin_assets_mapping', 'Generate the pkg of zip by dest static assets', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       mapping: defaultOutput,
