@@ -68,7 +68,7 @@ module.exports = function(grunt) {
       if(dependencies){
         if(grunt.util.kindOf(dependencies) == 'string'){
           if (options.mapping) {
-            mapping[ 'dependencies' ] = dependencies
+            mapping[ 'dependencies' ] = [dependencies];
           }
         }
         if(grunt.util.kindOf(dependencies) == 'array' && dependencies.length){
