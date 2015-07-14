@@ -66,7 +66,9 @@ grunt.initConfig({
               {
                   cwd:'test/module1/',
                   src:['**/*.js','**/*.css','**/*.htm','**/*.{jpg,jpeg,gif,png}'],
-                  dest:'tmp/module1/'
+                  dest:'tmp/module1/',
+                  //the module path which dependency
+                  denpendencies:'common/lib.js'
               },
               {
                   cwd:'test/module2/',

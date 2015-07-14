@@ -47,12 +47,14 @@ module.exports = function(grunt) {
             {
                 cwd:'test/module1/',
                 src:['**/*.js','**/*.css','**/*.htm','**/*.{jpg,jpeg,gif,png}'],
-                dest:'tmp/module1/'
+                dest:'tmp/module1/',
+                dependencies:'common/lib.js'
             },
             {
                 cwd:'test/module2/',
                 src:['**/*.js','**/*.css','**/*.htm','**/*.{jpg,jpeg,gif,png}'],
-                dest:'tmp/module2/'
+                dest:'tmp/module2/',
+                dependencies:['common/aa.js','common/bb.js']
             }
           ]
       }

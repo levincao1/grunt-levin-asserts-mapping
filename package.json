@@ -1,7 +1,7 @@
 {
   "name": "grunt-levin-assets-mapping",
   "description": "Generate the mapping of json file  by dest static assets",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "",
   "author": "levin cao <lansdmn@gmail.com> (http://www.cnblogs.com/levincao)",
   "repository": {

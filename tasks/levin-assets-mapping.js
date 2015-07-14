@@ -40,8 +40,7 @@ module.exports = function(grunt) {
     this.files.forEach(function(filePair) {
       var cwd = filePair.cwd,
           dest = filePair.dest,
-          zip_name = filePair.zip_name,
-          map_name = filePair.map_name,
+          dependencies = filePair.dependencies,
           mapping = {};
 
       // Concat specified files.
@@ -66,7 +65,18 @@ module.exports = function(grunt) {
       if (dest && grunt.file.isFile(dest)) {
         grunt.fail.fatal('Destination for target %s is not a directory', dest);
       }
-
+      if(dependencies){
+        if(grunt.util.kindOf(dependencies) == 'string'){
+          if (options.mapping) {
+            mapping[ 'dependencies' ] = dependencies
+          }
+        }
+        if(grunt.util.kindOf(dependencies) == 'array' && dependencies.length){
+          if (options.mapping) {
+            mapping[ 'dependencies' ] = dependencies
+          }
+        }
+      }
       src.forEach(function (filePath) {
         var realPath = getRealPath(filePath),
             hashed;
@@ -107,7 +117,8 @@ module.exports = function(grunt) {
           };
         }
         //grunt.log.warn('levin-> '.green + Object.keys(mapping).length + ' => '.magenta + src.length);
-        if (Object.keys(mapping).length === src.length) {
+        var len  = mapping.dependencies ? Object.keys(mapping).length - 1 : Object.keys(mapping).length;
+        if (len === src.length) {
           createMapping();
         }
       }
@@ -152,7 +163,7 @@ module.exports = function(grunt) {
 
           var jsonFile = 'string' === typeof options.mapping ? options.mapping : defaultOutput;
           jsonFile = grunt.template.process(jsonFile, templateOptions);
-          mapping = sortObject(mapping);
+          //mapping = sortObject(mapping);
           grunt.file.write(jsonFile, JSON.stringify(mapping, null, 2));
           grunt.log.writeln('✔ '.green + 'Mapping file: ' + jsonFile + ' saved.');
         } else {
